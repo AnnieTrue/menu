@@ -1,0 +1,131 @@
+<head>
+	<link href="style.css" rel="stylesheet" type="text/css"/>
+	<title>menu</title>
+</head>
+<body>
+
+	<!-- <div class="card">
+	
+		<div class="number">~ 1 ~</div>
+		<div class="name">big small big</div>
+		<ul class="meals">
+			<li>big</li>
+			<ul class="food">
+				<li></li>
+			</ul>
+			<li></li>
+			<li></li>
+		</ul> 
+
+	</div> -->
+
+
+	<script>
+		function Card(name, categories, food){
+			this.name = name
+			this.categories = categories
+			this.food = food
+		}
+
+		function makeHTML(number, card){
+			var newCard = document.createElement("div")
+			newCard.className = "card"
+
+			var n = document.createElement("div")
+			n.className = "number"
+			n.textContent = "~ "+number+" ~"
+
+			newCard.appendChild(n)
+
+			var name = document.createElement("div")
+			name.className = "name"
+			name.textContent = card.name
+
+			newCard.appendChild(name)
+
+			var meals = document.createElement("ul")
+				meals.className = "meals"
+
+
+			for (var i=0; i < card.categories.length; i++){
+				
+				var m = document.createElement("li")
+				m.textContent = card.categories[i]
+				meals.appendChild(m)
+
+				var f = document.createElement("ul")
+				f.className = "food"
+
+				for (var j = 0; j< card.food[i].length; j++){
+					var food = document.createElement("li")
+					food.className = "food"
+					food.textContent = card.food[i][j]
+					f.appendChild(food)
+
+				}
+
+				meals.appendChild(f)
+
+			}
+
+			newCard.appendChild(meals)
+
+
+			document.body.appendChild(newCard)
+
+		}
+		
+
+		var days = [
+			["Egg Breakfast", ["BIG", "SMALL", "SMALL"], [["plain omlete", "english muffin / rye toast / wheat toast", "orange juice"],["apple", "peanut butter"],["yogurt and granola"]]],
+			["Pancake Day", ["BIG", "SMALL", "SMALL"], [["fluffy pancakes", "milk"],["ms chckn nuggets", "ketchup"],["yogurt and granola"]]],
+			["Shake Breakfast", ["BIG", "SMALL", "SMALL"], [["peanut butter protein shake"],["chao grilled cheese"],["apple", "peanut butter"]]],
+			["CTC Day", ["SMALL", "BIG", "SMALL"], [["cinnamon toast crunch"],["ms veggie burger", "whole wheat bread", "lettuce", "ketchup", "baked potato"],["yogurt and granola"]]],
+			["Bagel Breakfast", ["SMALL", "BIG", "SMALL"], [["sesame seed bagel", "fairlife shake"],["gardien trky", "strawberry/mixed berry yogurt", "broccoli littles"],["peanut butter protein shake"]]],
+			["Super Mac", ["SMALL", "BIG", "SMALL"], [["yogurt and granola"],["annie's mac", "california blend"],["peanut butter protein shake"]]],
+			["Packed Luch", ["SMALL", "SMALL", "BIG"], [["peanut butter protein shake"],["pb on whole wheat", "nesquik"],["wg buttered noodles", "fairlife shake"]]],
+			["Potato + Nuggets", ["SMALL", "BIG", "SMALL"], [["yogurt and granola"],["baked potato", 
+				"ms nuggets", "ketchup", "broccoli littles"],["peanut butter protein shake"]]],
+			["Spaghetti & Meatballs", ["SMALL", "BIG", "SMALL"], [["strawberry/mixed berry yogurt", "english muffin / rye toast"],["angel hair pasta", "3 gardein meatballs", "parm romano", "classico"],["apple & peanut butter"]]],
+			["Veggie Burger", ["SMALL", "BIG", "SMALL"], [["nutrigrain", "milk or tea"],["ms veggie burger", "ww bread", "lettuce", "ketchup", "broccoli littles/baked potato"],["yogurt and granola"]]],
+			["Buttered Noodles", ["SMALL", "SMALL", "BIG"], [["yogurt and granola"],["apple", "peanut butter"],["wg buttered noodles", "california blend", "fairlife shake"]]],
+			["Egg Breakfast", ["BIG", "SMALL", "SMALL"], [["plain omlete", "english muffin / rye toast / wheat toast", "orange juice"],["apple", "peanut butter"],["yogurt and granola"]]],
+			["Spaghettia + Meatballs + Nuggets", ["SMALL", "SMALL", "BIG"], [["milk", "nutrigrain"],["5 ms nuggets", "ketchup"],["angel hair pasta", "classico", "3 gardein meatballs", "parm romano", "nesquik"]]],
+			["Grilled Cheese", ["SMALL", "BIG", "SMALL", "EVENING"], [["yogurt and granola"],["chao grilled cheese", "broccoli littles", "fairlife shake"],["apple", "peanut butter"], ["peanut butter protein shake"]]],
+			["Tofu Pasta", ["SMALL", "SMALL", "BIG"], [["yogurt and granola"],["peanut butter protein shake"],["B's tofu pasta", "nesquik"]]],
+			["Low Energy PB Day", ["SMALL", "BIG", "SMALL", "EVENING"], [["yogurt and granola"],["pb protein shake"],["pb and apple / pb crackers"],[ "nesquik", "pretzels"]]],
+			["Egg Breakfast", ["BIG", "SMALL", "SMALL"], [["plain omlete", "english muffin / rye toast / wheat toast", "orange juice"],["apple", "peanut butter"],["yogurt and granola"]]], 
+			["Freezer Lunch", ["SMALL", "BIG", "SMALL"], [["nutrigrain", "milk/tea"], ["5 ms nuggets", "ketchup", "broccoli littles/baked potato"], ["yogurt and granola"]]],
+			["Egg Breakfast", ["BIG", "SMALL", "SMALL"], [["plain omlete", "english muffin / rye toast / wheat toast", "orange juice"],["apple", "peanut butter"],["yogurt and granola"]]],
+			["Mac & Cheese SOS", ["SMALL", "BIG", "SMALL", "EVENING"], [["yogurt and granola"], ["super mac", "california blend/broccoli"], ["apple and pb"], ["pb protein shake"]]],
+			["Grilled Cheese SOS", ["SMALL", "BIG", "SMALL", "EVENING"], [["nutrigrain", "milk/tea"],["chao grilled cheese", "broccoli littles", "lemonade/nesquik"],["yogurt and granola"], ["nesquik/apple pb"]]],
+			["Chinese", ["SMALL", "BIG", "SMALL/EVENING"], [["yogurt and granola"],["plain fried rice", "steamed broccoli", "fairlife shake"],["apple pb"]]],
+			["Girlfriend Pizza", ["SMALL", "SMALL", "BIG/SOCIAL", "EVENING"], [["yogurt and granola"],["apple", "peanut butter"],["1-2 slices of pizza", "nesquik"], ["dessert?"]]],
+			["Oreo Night", ["BIG", "SMALL", "SMALL"], [["plain omlete", "english muffin / rye toast / wheat toast", "orange juice"],["pb on ww", "fairlife shake"],["6 oreos", "milk"]]],
+			["Ice Cream Night", ["SMALL", "BIG", "SMALL/DESSERT"], [["yogurt and granola"], ["ms veggie burger", "lettuce", "whole wheat", "ketchup", "baked potato/broccoli littles" ], ["ice cream sundae"]]],
+			["Pancakes + Cookies", ["BIG", "SMALL", "SMALL/DESSERT"], [["fluffy pancakes", "milk"],["5 ms nuggets", "ketchup"],["mcd chocolate chip cookies"]]],
+			["Comfort Foods", ["BIG", "SMALL", "MEDIUM", "OPTIONAL"], [["annie's mac"],["apple", "peanut butter"],["chao grilled cheese", "fairlife shake"],["yogurt and granola"]]],
+			["Sweet Salty Sweet", ["SMALL", "BIG", "SMALL"], [["cinnamon toast crunch"],["chao grilled cheese", "baked potato", "fairlife"],["yogurt and granola"]]],
+			["Salty Sweet Salty", ["BIG", "SMALL", "BIG"], [["plain omlete", "english muffin / rye toast / wheat toast", "orange juice"],["yogurt and granola"],["baked potato", "5 ms nuggets"]]], 
+			["Spaghetti & Meatballs & Veggies", ["SMALL", "SMALL", "BIG"], [,["yogurt and granola"],["angel hair", "3 gardein meatballs", "parm romano", "california blend / peas"],["nesquik/apple and pb"]]],
+			["Salade", ["SMALL", "BIG", "SMALL"], [["pb protein shake"],["romaine", "ms chckn strips", "broccoli littles", "vegetarian caesar dressing"],["nesquik/yogurt and granola"]]],
+			["Trky", ["SMALL", "BIG", "SMALL"], [["yogurt and granola"],["2 gardein trky", "california blend", "baked potato/cresent rolls"],["pb protein shake"]]]
+
+		]
+
+		var cards = []
+
+		for (var i = 0; i<days.length; i++){
+			cards.push(new Card(days[i][0], days[i][1], days[i][2]))
+		}
+
+		// console.log(cards)
+		for (var i = 0; i<cards.length; i++){
+			makeHTML(i+1, cards[i])
+		}
+	</script>
+</body>
+
+
+
+
