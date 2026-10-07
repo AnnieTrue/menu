@@ -21,16 +21,16 @@ body{
 	/*justify-content: space-evenly;*/
 	padding: 5vh;
 	font-family: "Patrick Hand", cursive;
-	font-size: 18pt;
+	font-size: 40pt;
 }
 
 .number{
 	font-family: "Luckiest Guy", cursive;
-	font-size: 20pt;
+	font-size: 50pt;
 }
 
 .name{
 	  font-family: "Luckiest Guy", cursive;
-	font-size: 20pt;
+	font-size: 50pt;
 }
 
